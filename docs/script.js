@@ -1,8 +1,6 @@
-// Data for the scripts
 const scriptsData = {
     script1: {
-        name: 'script1.txt',
-        video: '../demo/results/script1/4_final/script1_final.mp4',
+        video: 'assets/script1_final.mp4',
         content: `EXT. BEACH - DAY
 
 DEREK (26) stands near the water, looking out. SOPHIE (25) walks up and stops beside him.
@@ -47,8 +45,7 @@ She waves him off and starts walking away down the beach.
 She doesn't turn around. He watches her go.`
     },
     script2: {
-        name: 'script2.txt',
-        video: '../demo/results/script2/4_final/script2_final.mp4',
+        video: 'assets/script2_final.mp4',
         content: `INT. KITCHEN - MORNING
 
 MARA (30) stands at the sink, washing dishes. JAKE (33) walks in and leans against the doorframe.
@@ -86,8 +83,7 @@ Mara turns off the tap. She turns around.
 She walks past him toward the door. Jake stands there alone.`
     },
     script3: {
-        name: 'script3.txt',
-        video: '../demo/results/script3/4_final/script3_final.mp4',
+        video: 'assets/script3_final.mp4',
         content: `INT. LIVING ROOM - DAY
 
 LENA (21) and GEORGE (24) sit on the couch, looking at the TV. 
@@ -116,84 +112,33 @@ She walks away. George gets up.
     }
 };
 
-// DOM Elements
 const scriptBtns = document.querySelectorAll('.script-btn');
 const scriptContent = document.getElementById('script-content');
-const scriptName = document.getElementById('current-script-name');
 const videoPlayer = document.getElementById('demo-video');
-const videoContainer = document.querySelector('.video-container');
 
-// Change Demo Function
 function changeDemo(scriptId) {
     const data = scriptsData[scriptId];
     if (!data) return;
 
-    // Update active state on buttons
     scriptBtns.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.script === scriptId);
     });
 
-    // Update Code Panel
-    scriptContent.style.opacity = 0;
-    setTimeout(() => {
-        scriptName.textContent = data.name;
-        scriptContent.textContent = data.content;
-        scriptContent.style.opacity = 1;
-    }, 200);
-
-    // Update Video Panel with loading state
-    videoContainer.classList.add('loading');
+    scriptContent.textContent = data.content;
     
-    // Create new source element
     const source = videoPlayer.querySelector('source');
     source.src = data.video;
-    
-    // Reload and play video
     videoPlayer.load();
-    videoPlayer.play().catch(e => console.log("Autoplay prevented by browser", e));
-    
-    // Remove loading state when video can play
-    videoPlayer.addEventListener('canplay', function onCanPlay() {
-        videoContainer.classList.remove('loading');
-        videoPlayer.removeEventListener('canplay', onCanPlay);
-    });
+    videoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
 }
 
-// Add event listeners to buttons
 scriptBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        const scriptId = btn.dataset.script;
-        // Don't do anything if it's already active
         if (!btn.classList.contains('active')) {
-            changeDemo(scriptId);
+            changeDemo(btn.dataset.script);
         }
     });
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-        nav.style.padding = '1rem 0';
-    } else {
-        nav.style.boxShadow = 'none';
-        nav.style.padding = '1.5rem 0';
-    }
-});
+// Initialize with first script
+changeDemo('script1');

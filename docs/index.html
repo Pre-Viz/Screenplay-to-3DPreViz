@@ -3,209 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screenplay-to-3DPreViz | AI-Assisted Previsualization</title>
-    <meta name="description" content="AI-Assisted Screenplay-to-3D Previsualization in Blender: A Mixed-Initiative Pipeline for Editable Virtual Scenes.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <title>AI-Assisted Screenplay-to-3D Previsualization in Blender</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Elements -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                    <line x1="7" y1="2" x2="7" y2="22"></line>
-                    <line x1="17" y1="2" x2="17" y2="22"></line>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <line x1="2" y1="7" x2="7" y2="7"></line>
-                    <line x1="2" y1="17" x2="7" y2="17"></line>
-                    <line x1="17" y1="17" x2="22" y2="17"></line>
-                    <line x1="17" y1="7" x2="22" y2="7"></line>
-                </svg>
-                <span>3DPreViz</span>
+    <div class="container">
+        <header>
+            <h1>AI-Assisted Screenplay-to-3D Previsualization in Blender: A Mixed-Initiative Pipeline for Editable Virtual Scenes</h1>
+            <div class="links">
+                <a href="https://github.com/Pre-Viz/Screenplay-to-3DPreViz" target="_blank">[ GitHub Repository / Source Code ]</a>
             </div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#demo">Interactive Demo</a>
-                <a href="https://github.com/Pre-Viz/Screenplay-to-3DPreViz" target="_blank" class="btn btn-outline">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    Source Code
-                </a>
-            </div>
-        </div>
-    </nav>
+        </header>
 
-    <header class="hero">
-        <div class="hero-container">
-            <div class="badge">A Mixed-Initiative Pipeline</div>
-            <h1 class="hero-title">Screenplay-to-<span class="gradient-text">3DPreViz</span></h1>
-            <p class="hero-subtitle">Converts formatted narrative text into editable previsualization scenes inside Blender, combining LLM scene parsing with deterministic spatial correction.</p>
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <p>Three-dimensional previsualization can help filmmakers reason about blocking, camera placement, lens choice, and spatial continuity before production, but conventional 3D workflows remain difficult for independent and entry-level filmmakers to access. This project presents a mixed-initiative screenplay-to-3D pipeline implemented in Blender that converts formatted narrative text into editable previsualization scenes. A large language model maps screenplay descriptions to a structured specification over a curated low-poly asset and animation vocabulary. Schema validation and deterministic correction passes address recurring placement, animation-transition, and prop-attachment errors. The workflow provides an explicit review boundary before camera planning and supports both direct Blender editing and bounded natural-language revision.</p>
+        </section>
+
+        <section id="workflow">
+            <h2>Workflow Diagram</h2>
+            <div class="diagram-container">
+                <!-- Replace 'workflow_diagram.png' with your actual image file once available -->
+                <img src="assets/workflow_diagram.png" alt="Detailed workflow of the screenplay-to-3D previsualization pipeline" onerror="this.src='https://via.placeholder.com/800x400?text=Workflow+Diagram+Image+Goes+Here'">
+                <p class="caption">Figure 1: Detailed workflow of the screenplay-to-3D previsualization pipeline. The process begins with formatted screenplay input, proceeds through Phase 1 scene generation and manual review, then uses the reviewed scene state for Phase 2 camera planning and final Blender output.</p>
+            </div>
+        </section>
+
+        <section id="demo">
+            <h2>Interactive Demonstration</h2>
+            <p>Select a screenplay excerpt below to view the text input and the resulting generated camera-ready 3D previsualization sequence.</p>
             
-            <div class="hero-actions">
-                <a href="#demo" class="btn btn-primary">Try the Demo</a>
-
-            </div>
-        </div>
-        
-        <div class="glass-panel highlights-panel" id="about">
-            <div class="highlight-item">
-                <div class="highlight-icon">📝</div>
-                <h3>Text to Scene</h3>
-                <p>Maps screenplay descriptions to structured specs over a curated low-poly asset vocabulary.</p>
-            </div>
-            <div class="highlight-item">
-                <div class="highlight-icon">🛠️</div>
-                <h3>Deterministic Fixes</h3>
-                <p>Schema validation addresses recurring placement, animation transition, and prop errors.</p>
-            </div>
-            <div class="highlight-item">
-                <div class="highlight-icon">👁️</div>
-                <h3>Human Review</h3>
-                <p>Explicit review boundary before camera planning to ensure creative alignment.</p>
-            </div>
-            <div class="highlight-item">
-                <div class="highlight-icon">💬</div>
-                <h3>MCP Edits</h3>
-                <p>Supports Model Context Protocol for natural-language edits to scenes, props, and cameras.</p>
-            </div>
-        </div>
-    </header>
-
-    <main class="demo-section" id="demo">
-        <div class="section-header">
-            <h2>Interactive <span class="gradient-text">Demonstration</span></h2>
-            <p>Select a script below to see how the pipeline translates screenplay text into an animated 3D previsualization sequence.</p>
-        </div>
-
-        <div class="demo-container">
-            <div class="demo-sidebar">
-                <button class="script-btn active" data-script="script1">
-                    <div class="script-btn-icon">🌊</div>
-                    <div class="script-btn-info">
-                        <h4>Script 1: The Beach</h4>
-                        <span>EXT. BEACH - DAY</span>
-                    </div>
-                </button>
-                <button class="script-btn" data-script="script2">
-                    <div class="script-btn-icon">☕</div>
-                    <div class="script-btn-info">
-                        <h4>Script 2: Kitchen</h4>
-                        <span>INT. KITCHEN - MORNING</span>
-                    </div>
-                </button>
-                <button class="script-btn" data-script="script3">
-                    <div class="script-btn-icon">🛋️</div>
-                    <div class="script-btn-info">
-                        <h4>Script 3: Living Room</h4>
-                        <span>INT. LIVING ROOM - DAY</span>
-                    </div>
-                </button>
-            </div>
-
-            <div class="demo-content">
-                <div class="glass-panel code-panel">
-                    <div class="panel-header">
-                        <div class="window-controls">
-                            <div class="dot red"></div>
-                            <div class="dot yellow"></div>
-                            <div class="dot green"></div>
-                        </div>
-                        <span class="file-name" id="current-script-name">script1.txt</span>
-                    </div>
-                    <div class="code-container">
-                        <pre><code id="script-content" class="language-fountain">EXT. BEACH - DAY
-
-DEREK (26) stands near the water, looking out. SOPHIE (25) walks up and stops beside him.
-
-                         SOPHIE
-                         You didn't say goodbye last time either.
-
-                         DEREK
-                         I know. I'm sorry.
-
-                         SOPHIE
-                         Are you actually leaving? For good?
-
-                         DEREK
-                         I got the position. It's overseas.
-
-Sophie nods slowly. She looks out at the water.
-
-                         SOPHIE
-                         When?
-
-                         DEREK
-                         Tomorrow morning.
-
-                         SOPHIE
-                         (laughs softly)
-                         Of course it's tomorrow.
-
-Derek turns to face her.
-
-                         DEREK
-                         You could come, you know.
-
-                         SOPHIE
-                         Don't.
-
-She waves him off and starts walking away down the beach.
-
-                         DEREK
-                         Sophie.
-
-She doesn't turn around. He watches her go.</code></pre>
-                    </div>
+            <div class="demo-grid">
+                <div class="demo-controls">
+                    <button class="script-btn active" data-script="script1">Script 1: Beach Day</button>
+                    <button class="script-btn" data-script="script2">Script 2: Kitchen Morning</button>
+                    <button class="script-btn" data-script="script3">Script 3: Living Room</button>
                 </div>
 
-                <div class="glass-panel video-panel">
-                    <div class="panel-header">
-                        <span class="file-name">Rendered Previsualization</span>
-                        <div class="badge-small">Phase 2 Output</div>
+                <div class="demo-content">
+                    <div class="code-box">
+                        <div class="box-header">Screenplay Input</div>
+                        <pre><code id="script-content"></code></pre>
                     </div>
-                    <div class="video-container">
-                        <!-- Loading spinner -->
-                        <div class="loader" id="video-loader"></div>
+                    <div class="video-box">
+                        <div class="box-header">Previsualization Output (Phase 2)</div>
                         <video id="demo-video" controls autoplay loop muted>
-                            <source src="../demo/results/script1/4_final/script1_final.mp4" type="video/mp4">
+                            <source src="assets/script1_final.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="logo">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                    <line x1="7" y1="2" x2="7" y2="22"></line>
-                    <line x1="17" y1="2" x2="17" y2="22"></line>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <line x1="2" y1="7" x2="7" y2="7"></line>
-                    <line x1="2" y1="17" x2="7" y2="17"></line>
-                    <line x1="17" y1="17" x2="22" y2="17"></line>
-                    <line x1="17" y1="7" x2="22" y2="7"></line>
-                </svg>
-                <span>3DPreViz</span>
-            </div>
-            <p>AI-Assisted Screenplay-to-3D Previsualization in Blender.</p>
-            <p class="copyright">© 2026 Screenplay-to-3DPreViz Project. All rights reserved.</p>
-        </div>
-    </footer>
-
+        <footer>
+            <p>Source code and documentation available on <a href="https://github.com/Pre-Viz/Screenplay-to-3DPreViz">GitHub</a>.</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
