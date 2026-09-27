@@ -1,0 +1,17 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Blender backups
+*.blend1
+
+# Generated pipeline outputs
+output/
+temp_optimized_scene_script.py
+debug_optimized_script.py
+_camera_setup_script.py
+debug_camera_script.py

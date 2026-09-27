@@ -1,0 +1,8 @@
+# Core (Groq backend uses plain HTTP)
+requests
+pypdf
+
+# Optional LLM backends — install whichever you use
+anthropic
+openai
+google-generativeai
